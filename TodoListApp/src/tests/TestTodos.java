@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Calendar;
 
+import static junit.framework.TestCase.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
 class TestTodos {
