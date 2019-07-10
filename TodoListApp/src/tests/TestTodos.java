@@ -9,11 +9,11 @@ import java.util.Calendar;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class TestTodos {
+class TestTodos {
     private Todos testTodos;
 
     @BeforeEach
-    public void runBefore() {
+    private void runBefore() {
         testTodos = new Todos();
 
         Calendar testDate = Calendar.getInstance();
@@ -26,7 +26,7 @@ public class TestTodos {
     }
 
     @Test
-    public void testContains() {
+    private void testContains() {
         assertTrue(testTodos.contains("todo0"));
         assertTrue(testTodos.contains("todo5"));
         assertTrue(testTodos.contains("todo9"));
@@ -35,7 +35,7 @@ public class TestTodos {
     }
 
     @Test
-    public void testRemove() {
+    private void testRemove() {
         assertTrue(testTodos.contains("todo5"));
         testTodos.remove("todo5");
         assertFalse(testTodos.contains("todo5"));
@@ -47,7 +47,7 @@ public class TestTodos {
     }
 
     @Test
-    public void testClear() {
+    private void testClear() {
         testTodos.clearTodos();
         assertTrue(testTodos.isEmpty());
     }

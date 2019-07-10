@@ -6,11 +6,12 @@ import java.util.Scanner;
 public class TodoList {
 
     private Todos todos = new Todos();
-    Scanner scanner = new Scanner(System.in);
+    private Scanner scanner = new Scanner(System.in);
 
     public TodoList() {
-        String operation = "";
+        String operation;
 
+        label:
         while (true) {
             System.out.println("Please select an option:");
             System.out.println("add todo");
@@ -20,26 +21,23 @@ public class TodoList {
             System.out.println("quit");
             System.out.println("");
             operation = scanner.nextLine();
-            System.out.println("you selected: "+operation);
+            System.out.println("you selected: " + operation);
 
-            if (operation.equals("add todo")) {
-                addTodo();
-            }
-
-            else if (operation.equals("delete todo")) {
-                deleteTodo();
-            }
-
-            else if (operation.equals("clear list")) {
-                todos.clearTodos();
-            }
-
-            else if (operation.equals("list todos")) {
-                todos.listAllTodos();
-            }
-
-            else if (operation.equals("quit")) {
-                break;
+            switch (operation) {
+                case "add todo":
+                    addTodo();
+                    break;
+                case "delete todo":
+                    deleteTodo();
+                    break;
+                case "clear list":
+                    todos.clearTodos();
+                    break;
+                case "list todos":
+                    todos.listAllTodos();
+                    break;
+                case "quit":
+                    break label;
             }
         }
     }
