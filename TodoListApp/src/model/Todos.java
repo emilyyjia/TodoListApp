@@ -1,9 +1,10 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Objects;
 
-public class Todos {
+public class Todos implements Iterable<Todo> {
     private ArrayList<Todo> todos;
 
     public Todos() {
@@ -61,5 +62,10 @@ public class Todos {
     public int hashCode() {
 
         return Objects.hash(todos);
+    }
+
+    @Override
+    public Iterator<Todo> iterator() {
+        return todos.iterator();
     }
 }
