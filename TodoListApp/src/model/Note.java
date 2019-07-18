@@ -13,6 +13,7 @@ public class Note extends Item {
     Note(String name, String body) {
         this.name = name;
         this.body = body;
+        this.status = UNREAD;
     }
 
     void setBody(String body) {

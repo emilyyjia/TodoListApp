@@ -45,7 +45,7 @@ public class TodoList implements Loadable, Saveable {
                     clear();
                     break;
                 case "6":
-                    items.listAllItems();
+                    listAllItems();
                     break;
                 case "7":
                     save();
@@ -91,7 +91,6 @@ public class TodoList implements Loadable, Saveable {
         items.add(note);
         System.out.println("Added " + name + "!");
         System.out.println("");
-        scanner.nextLine();
     }
 
     private void editItem() {
@@ -184,6 +183,11 @@ public class TodoList implements Loadable, Saveable {
         System.out.println("");
     }
 
+    private void listAllItems() {
+        items.listAllItems();
+        System.out.println("");
+    }
+
     private void clear() {
         items.clearTodos();
     }
@@ -196,7 +200,7 @@ public class TodoList implements Loadable, Saveable {
 
             if (anItem.get(0).equals("todo")) {
 
-                String name = anItem.get(1);
+                String name = anItem.get(1).replaceAll("_", " ");
 
                 Calendar date = Calendar.getInstance();
                 int year = Integer.parseInt(anItem.get(2));
@@ -213,8 +217,8 @@ public class TodoList implements Loadable, Saveable {
             }
 
             else if (anItem.get(0).equals("note")) {
-                String name = anItem.get(1);
-                String body = anItem.get(2);
+                String name = anItem.get(1).replaceAll("_", " ");
+                String body = anItem.get(2).replaceAll("_", " ");
                 String status = anItem.get(3);
 
                 Note note = new Note(name,body);
@@ -238,7 +242,7 @@ public class TodoList implements Loadable, Saveable {
                 Todo todo = (Todo)item;
                 Calendar date = todo.getDueDate();
                 String line = "todo "
-                        + todo.getName() + " "
+                        + todo.getName().replaceAll(" ", "_") + " "
                         + date.get(Calendar.YEAR) + " "
                         + date.get(Calendar.MONTH) + " "
                         + date.get(Calendar.DATE) + " "
@@ -248,9 +252,9 @@ public class TodoList implements Loadable, Saveable {
 
             else if (item instanceof Note) {
                 Note note = (Note)item;
-                String line = "item "
-                        + note.getName() + " "
-                        + note.getBody() + " "
+                String line = "note "
+                        + note.getName().replaceAll(" ", "_") + " "
+                        + note.getBody().replaceAll(" ", "_") + " "
                         + note.getStatus();
                 writer.println(line);
             }
